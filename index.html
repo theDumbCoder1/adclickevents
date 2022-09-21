@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebView Test</title>
+
+    <!-- This should load once user scroll for the first time -->
+    <!-- <link rel="dns-prefetch" href="https://www.nissanusa.com/">
+    <link rel="preconnect" href="https://www.nissanusa.com/"> -->
+
+    <style>
+        *{margin:0;padding:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;word-break:break-word}
+        *:before,*:after {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+        html{text-size-adjust:none; -webkit-text-size-adjust:none;-ms-text-size-adjust:100%}
+        body{font-family:sans-serif;color:#333;font-size:14px;line-height:1.6}
+        a{text-decoration:none;outline:none;color:inherit;font:inherit}
+        a:focus{outline:none;box-shadow:none}
+        img{border:0;vertical-align:middle}
+        ul,li{list-style:none}
+        b,strong {font-weight:normal}
+        em,i{font-style:normal!important}
+        input,textarea,select,button{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}
+        input[type=submit]{cursor:pointer}
+        input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+        input[type=number] {-moz-appearance: textfield;}
+        input:focus,textarea:focus,select:focus{outline:none}
+        input:focus::placeholder{opacity:1;color:inherit;font:inherit}
+        button{cursor:pointer;border:none;outline:none}
+        h1,h2,h3,h4,h5,h6{font-weight:normal}
+        main{min-height:calc(100vh - 225px)}
+
+        .img-responsive {display:block;width:100%;height:auto}
+        .img-box{background-position:center center;background-repeat:no-repeat;background-color:#f8f8f8;background-size:cover}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 10px}
+        .row{margin-left:-10px;margin-right:-10px}
+        .clearfix:after,.clearfix:before,.container-fluid:after,.container-fluid:before,.container:after,.container:before,.row:after,.row:before{content:" ";display:table}
+        .clearfix:after,.container-fluid:after,.container:after,.row:after{clear:both}
+
+        /* Scrollbar */
+        ::-webkit-scrollbar{background:#555555;width:10px}
+        ::-webkit-scrollbar-thumb{background:#777777}
+
+        .pos-rel{position:relative}
+        .lc{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+        .tran{transition:all 0.30s ease-in-out;-webkit-transition:all 0.30s ease-in-out;-moz-transition:all 0.30s ease-in-out}
+
+        .ed-block{background-color:aliceblue;text-align:center;margin:30px auto;min-height:100px;display:flex;align-items:stretch;justify-content:center}
+        .ed-block a{display:flex;padding:10px 50px;width:100%;align-items:center;justify-content:center}
+        .eventBubble{position:fixed;top: 10px; left: 10px;background: #333;color: #fff;border-radius: 5px;padding: 10px;height:50px;overflow-y: auto;}
+        .eventBubble:empty{display:none}
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h2 class="title">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
+
+        <div class="ed-block">
+            <a class="top-ed-1" href="https://www.nissanusa.com/">top ad 1</a>
+        </div>
+        <div class="ed-block">
+            <a class="top-ed-2" href="https://www.nissanusa.com/">top ad 2</a>
+        </div>
+        
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            
+            <div class="ed-block">
+                <a class="btm-ed-1" href="https://www.nissanusa.com/">bottom ad 1</a>
+            </div>
+            <div class="ed-block">
+                <a class="btm-ed-2" href="https://www.nissanusa.com/">bottom ad 2</a>
+            </div>
+            
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
+        </div>
+
+        <div class="eventBubble"></div>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>
