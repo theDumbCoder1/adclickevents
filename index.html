@@ -7,8 +7,8 @@
     <title>WebView Test</title>
 
     <!-- This should load once user scroll for the first time -->
-    <link rel="dns-prefetch" href="https://www.nissanusa.com/">
-    <link rel="preconnect" href="https://www.nissanusa.com/">
+    <!-- <link rel="dns-prefetch" href="https://www.nissanusa.com/">
+    <link rel="preconnect" href="https://www.nissanusa.com/"> -->
 
     <style>
         *{margin:0;padding:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;word-break:break-word}
@@ -93,6 +93,26 @@
 
         <div class="eventBubble"></div>
     </section>
-    <!-- <script src="app.js"></script> -->
+    <script>
+        const dynamicPreconn = function(){
+            let linkDns = document.createElement('link');
+            linkDns.setAttribute("rel", "dns-prefetch");
+            linkDns.setAttribute("href", "https://www.nissanusa.com/");
+            
+            let preConn = document.createElement('link');
+            preConn.setAttribute("rel", "preconnect");
+            preConn.setAttribute("href", "https://www.nissanusa.com/");
+            
+            document.querySelector('head').appendChild(linkDns);
+            document.querySelector('head').appendChild(preConn);
+
+            preconinit = true;
+    }
+
+    window.setTimeout(function(){
+        dynamicPreconn();
+    }, 3000);
+    
+    </script>
 </body>
 </html>
