@@ -78,11 +78,13 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
             
-            <div class="ed-block">
-                <a class="btm-ed-1" href="https://www.nissanusa.com/">bottom ad 1</a>
-            </div>
-            <div class="ed-block">
-                <a class="btm-ed-2" href="https://www.nissanusa.com/">bottom ad 2</a>
+            <div class="bottom-ad-group">
+                <div class="ed-block">
+                    <a class="btm-ed-1" href="https://www.nissanusa.com/">bottom ad 1</a>
+                </div>
+                <div class="ed-block">
+                    <a class="btm-ed-2" href="https://www.nissanusa.com/">bottom ad 2</a>
+                </div>
             </div>
             
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae eligendi magnam similique mollitia voluptatum voluptatem aut veritatis esse culpa, quas in quam ab dolore a ducimus doloribus, saepe earum repudiandae.</p>
@@ -94,6 +96,14 @@
         <div class="eventBubble"></div>
     </section>
     <script>
+        let preconinit = false;
+        let debounceTimer;
+
+        let myElement = document.querySelector('.bottom-ad-group');
+        let bounding = myElement.getBoundingClientRect();
+        let myElementHeight = myElement.offsetHeight;
+        let myElementWidth = myElement.offsetWidth;
+
         const dynamicPreconn = function(){
             let linkDns = document.createElement('link');
             linkDns.setAttribute("rel", "dns-prefetch");
@@ -105,14 +115,28 @@
             
             document.querySelector('head').appendChild(linkDns);
             document.querySelector('head').appendChild(preConn);
+        }
 
-            preconinit = true;
-    }
+       
 
-    window.setTimeout(function(){
-        dynamicPreconn();
-    }, 3000);
-    
+        window.onscroll =  function elementInViewport() {
+            if(!preconinit){
+                window.clearTimeout(debounceTimer);
+                debounceTimer = window.setTimeout(function(){
+                    bounding = myElement.getBoundingClientRect();
+                    if (bounding.top >= -myElementHeight 
+                        && bounding.left >= -myElementWidth
+                        && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) + myElementWidth
+                        && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight) {
+                        preconinit = true;
+                        
+                        dynamicPreconn();
+                    }
+                }, 300);
+            }
+        }
+
+
     </script>
 </body>
 </html>
